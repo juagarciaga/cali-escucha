@@ -39,7 +39,7 @@ body {
     flex: 0 0 70%;
     max-width: 70%;
     flex-wrap: wrap;
-    min-height: 150vh;
+    min-height: 100vh;
     font-size: 23px;
   }
   

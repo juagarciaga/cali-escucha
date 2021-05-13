@@ -51,7 +51,7 @@ const BoxWrapper = styled.div`
   flex-wrap: wrap;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  gap: 18px;
+  gap: 20px;
 `;
 
 const Box = styled.div`
@@ -61,6 +61,11 @@ const Box = styled.div`
   position: relative;
   box-shadow: 5px 5px;
   font-size: 15px;
+  margin: 15px;
+
+  @media screen and (min-width: 768px) {
+    margin: 0;
+  }
 
   ul {
     display: flex;

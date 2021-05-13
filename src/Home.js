@@ -140,7 +140,11 @@ const WrapperSpeakerphone = styled.div`
 `;
 
 const WrapperEllipsisH = styled.div`
-  width: 30%;
+  width: 100%;
   margin: 15px auto 0;
   display: flex;
+
+  @media screen and (min-width: 768px) {
+    width: 60%;
+  }
 `;

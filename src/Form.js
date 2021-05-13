@@ -58,8 +58,12 @@ const FormBox = styled.form`
   display: flex;
   flex-direction: column;
   gap: 15px;
-  max-width: 50vw;
-  margin: 50px auto;
+  margin: 15px auto;
+
+  @media screen and (min-width: 768px) {
+    max-width: 50vw;
+    margin: 50px auto;
+  }
 
   input {
     height: 35px;

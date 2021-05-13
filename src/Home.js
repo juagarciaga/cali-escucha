@@ -1,6 +1,6 @@
 import "./App.css";
 import { Speakerphone } from "@styled-icons/heroicons-outline/Speakerphone";
-import { DotSingle } from "@styled-icons/entypo/DotSingle";
+
 import styled from "styled-components";
 import { Menu } from "./Menu";
 import * as R from "ramda";
@@ -141,10 +141,21 @@ const WrapperSpeakerphone = styled.div`
 
 const WrapperEllipsisH = styled.div`
   width: 100%;
-  margin: 15px auto 0;
+  margin: 20px auto;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
 
   @media screen and (min-width: 768px) {
     width: 60%;
   }
+`;
+
+const DotSingle = styled.div`
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  display: block;
+  background: #455067;
 `;

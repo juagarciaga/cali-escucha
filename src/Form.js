@@ -10,17 +10,12 @@ export const Form = () => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const {
-    register,
-    handleSubmit,
-
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
     setLoading(true);
     emailjs
-      .sendForm(
+      .send(
         "service_7yokpsv",
         "template_j8s4jp9",
         data,
@@ -28,18 +23,19 @@ export const Form = () => {
       )
       .then(
         (result) => {
-          console.log(result.text);
-          setLoading(false);
-          setSuccess(true);
+          if (result.text === "OK") {
+            setLoading(false);
+            setSuccess(true);
+          }
         },
         (error) => {
-          console.log(error.text);
-          setLoading(false);
-          setError(true);
+          if (error.text) {
+            setLoading(false);
+            setError(true);
+          }
         }
       );
   };
-  console.log(errors);
 
   return (
     <div>

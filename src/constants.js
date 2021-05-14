@@ -1,8 +1,8 @@
 export const questions = [
   "¿Cuál ha sido tu emoción más predominante en la última semana?",
+  "¿Cómo te sientes hoy?",
   "¿Qué debemos cambiar o mejorar en Cali y el país?",
   "¿Cuál crees que es el tema más prioritario?",
-  "¿Cómo te sientes hoy?",
   "¿Cómo lo podemos lograr?",
   "¿Qué puedo hacer como ciudadan@ para lograrlo?",
 ];

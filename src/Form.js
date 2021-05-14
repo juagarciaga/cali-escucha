@@ -1,16 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import { Menu } from "./Menu";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import { questions } from "./constants";
+import emailjs from "emailjs-com";
 
 export const Form = () => {
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   const {
     register,
     handleSubmit,
+
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+
+  const onSubmit = (data) => {
+    setLoading(true);
+    emailjs
+      .sendForm(
+        "service_7yokpsv",
+        "template_j8s4jp9",
+        data,
+        "user_lHT5i4iPwLt5UeWyUxt7G"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          setLoading(false);
+          setSuccess(true);
+        },
+        (error) => {
+          console.log(error.text);
+          setLoading(false);
+          setError(true);
+        }
+      );
+  };
   console.log(errors);
 
   return (
@@ -42,7 +70,18 @@ export const Form = () => {
           );
         })}
 
-        <input type="submit" value="Enviar" />
+        <input
+          type="submit"
+          value={
+            loading
+              ? "Enviando..."
+              : success
+              ? "Enviado!"
+              : error
+              ? "Server Error"
+              : "Enviar"
+          }
+        />
       </FormBox>
       <Menu />
     </div>

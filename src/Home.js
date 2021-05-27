@@ -1,13 +1,13 @@
-import "./App.css";
-import { Speakerphone } from "@styled-icons/heroicons-outline/Speakerphone";
+import './App.css';
+import { Speakerphone } from '@styled-icons/heroicons-outline/Speakerphone';
 
-import styled from "styled-components";
-import { Menu } from "./Menu";
-import * as R from "ramda";
-import { questions } from "./constants";
+import styled from 'styled-components';
+import { Menu } from './Menu';
+import * as R from 'ramda';
+import { questions } from './constants';
 export const Home = () => {
   return (
-    <header className="App-header">
+    <header className='App-header'>
       <Intro>
         <h1>Historias de protesta</h1>
         <WrapperEllipsisH>{R.repeat(<DotSingle />, 4)}</WrapperEllipsisH>
@@ -34,11 +34,11 @@ export const Home = () => {
         </WrapperSpeakerphone>
       </Intro>
 
-      <div className="questions">
+      <div className='questions'>
         {questions.map((question, index) => (
           <Question>
-            <span className="number">{index + 1}</span>
-            <p>{question}</p>
+            <span className='number'>{index + 1}</span>
+            <p>{question.label}</p>
           </Question>
         ))}
 

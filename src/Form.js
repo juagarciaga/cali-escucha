@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { Menu } from "./Menu";
-import { useForm } from "react-hook-form";
-import styled from "styled-components";
-import { questions } from "./constants";
-import emailjs from "emailjs-com";
+import React, { useState } from 'react';
+import { Menu } from './Menu';
+import { useForm } from 'react-hook-form';
+import styled from 'styled-components';
+import { questions } from './constants';
+import emailjs from 'emailjs-com';
 
 export const Form = () => {
   const [success, setSuccess] = useState(false);
@@ -13,17 +13,18 @@ export const Form = () => {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
+    console.log(data);
     setLoading(true);
     emailjs
       .send(
-        "service_7yokpsv",
-        "template_j8s4jp9",
+        'service_7yokpsv',
+        'template_j8s4jp9',
         data,
-        "user_lHT5i4iPwLt5UeWyUxt7G"
+        'user_lHT5i4iPwLt5UeWyUxt7G'
       )
       .then(
         (result) => {
-          if (result.text === "OK") {
+          if (result.text === 'OK') {
             setLoading(false);
             setSuccess(true);
           }
@@ -41,41 +42,40 @@ export const Form = () => {
     <div>
       <FormBox onSubmit={handleSubmit(onSubmit)}>
         <input
-          placeholder="Un dia en la protesta de...."
-          type="text"
-          {...register("nombre", { required: true })}
+          placeholder='Un dia en la protesta de....'
+          type='text'
+          {...register('nombre', { required: true })}
         />
 
-        <input placeholder="Edad" type="number" {...register("edad")} />
+        <input placeholder='Edad' type='number' {...register('edad')} />
 
-        <input placeholder="Género" type="text" {...register("genero")} />
+        <input placeholder='Género' type='text' {...register('genero')} />
 
-        <input placeholder="Fecha" type="date" {...register("fecha")} />
+        <input placeholder='Fecha' type='date' {...register('fecha')} />
 
-        <input placeholder="Lugar" type="text" {...register("lugar")} />
+        <input placeholder='Lugar' type='text' {...register('lugar')} />
 
         {questions.map((question, index) => {
-          const name = question.replace(/\s/g, "");
           return (
             <input
               key={index}
-              placeholder={question}
-              type="text"
-              {...register(name)}
+              placeholder={question.label}
+              type='text'
+              {...register(question.name)}
             />
           );
         })}
 
         <input
-          type="submit"
+          type='submit'
           value={
             loading
-              ? "Enviando..."
+              ? 'Enviando...'
               : success
-              ? "Enviado!"
+              ? 'Enviado!'
               : error
-              ? "Server Error"
-              : "Enviar"
+              ? 'Server Error'
+              : 'Enviar'
           }
         />
       </FormBox>
